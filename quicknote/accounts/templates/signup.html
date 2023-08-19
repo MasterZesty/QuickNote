@@ -4,7 +4,24 @@
 
 {% block content %}
 
+<!-- display message -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Error!</strong> {{ message }}
+              </div>
+        </div>
+        
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
   <div class="container mt-4">
+    
     <div class="container">
      <div class="row justify-content-center">
        <div class="col-md-6">
@@ -85,7 +102,7 @@
            <!-- card-body end .// -->
 
            <div class="card-body text-center p-0">
-             Have an account? <a href="#">Log In</a>
+             Have an account? <a href="{% url 'accounts:login' %}">Log In</a>
            </div>
            <div class="card-body text-center p-1">
               <a href="#">Forgot your password?</a>
@@ -100,4 +117,5 @@
    </div>
    <!--container end.//-->
 
+   
 {% endblock content %}

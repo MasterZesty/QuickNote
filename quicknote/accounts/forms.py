@@ -8,7 +8,8 @@ from django.db import models
 
 # create login form
 class LoginUserForm(AuthenticationForm):
-    pass
+    username = forms.CharField(max_length=65)
+    password = forms.CharField(max_length=65, widget=forms.PasswordInput)
 
 # signup form
 class RegisterUserForm(UserCreationForm):

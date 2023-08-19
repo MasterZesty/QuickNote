@@ -1,7 +1,29 @@
 {% extends "base.html" %} {% load static %} 
 
-
 {% block content %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>Success!</strong> {{ message }}
+              </div>
+        </div>
+        
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% if form.username.errors %}
+                      {% for error in form.email.errors %}
+                 
+                      {{ error }}
+                    
+                    {% endfor %}
+{% endif %}
 
 
 <h5>hi</h5>

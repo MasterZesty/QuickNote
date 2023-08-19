@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import RegisterUserForm
 from .forms import LoginUserForm
-from django.http import Http404
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -20,10 +20,33 @@ def accounts_profile(request):
     return render(request, 'profile.html',context)
 
 def accounts_login(request):
-    pass
+    print(request)
+    if request.method == 'POST':
+        form = LoginUserForm(request, data=request.POST)
+        print(form)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            print(username,password)
+            # verify a user credentials - checks the provided credentials against the credentials stored in the database
+            user = authenticate(request,username=username,password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request,f'Hi {username.title()}, login successful!')
+                # return render(request, 'authenticate/home_user.html',{'username': username}) # Redirect to user's page
+                return redirect('accounts:profile') # Redirect to user's page
+            else:
+                form.add_error(None, 'Invalid username or password')
+                
+    else:
+        form = LoginUserForm()
+
+    return render(request,'login.html',{'form': form})
 
 def accounts_logout(request):
-    pass
+	logout(request)
+	messages.success(request, ("You Were Logged Out!"))
+	return HttpResponse("<h1>'Hello World'</h1>")
 
 def accounts_password_change(request):
     pass
