@@ -8,36 +8,40 @@ from django.http import Http404
 
 
 # Create your views here.
+@login_required
+def accounts_profile(request):
+    
+    user = request.user  # Get the authenticated user
 
-def login(request):
+    context = {
+        'user': user
+    }
+
+    return render(request, 'profile.html',context)
+
+def accounts_login(request):
     pass
 
-def logout(request):
+def accounts_logout(request):
     pass
 
-def password_change(request):
+def accounts_password_change(request):
     pass
 
-def password_reset(request):
+def accounts_password_reset(request):
     pass
 
-def signup(request):
+def accounts_signup(request):
     # Create Account
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-
-            # Log in the user
-            username = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            user = authenticate(request, username=username, password=password)
-
             if user is not None:
                 login(request, user)
                 messages.success(request, "Registration successful!")
 
-                return redirect('https://www.google.com')  # Redirect to user's page
+                return redirect('accounts:profile')  # Redirect to user's page
         else:
             messages.error(request, "Registration failed. Please correct the errors below.")
     else:
@@ -45,6 +49,6 @@ def signup(request):
 
     return render(request, 'signup.html', {'form': form})
 
-def delete(request):
+def accounts_delete(request):
     pass
 

@@ -29,12 +29,12 @@
               {% csrf_token %}
                
                <div class="form-group mt-2">
-                 <label for="email">Email address</label>
-                 <input id="email" name="email" type="email" class="form-control" placeholder="" />
+                 <label for="username">Email address</label>
+                 <input id="username" name="username" type="email" class="form-control" placeholder="" />
                  <small class="form-text text-muted"
                    >We'll never share your email with anyone else.</small
                  >
-                 {% if form.email.errors %}
+                 {% if form.username.errors %}
                       {% for error in form.email.errors %}
                  <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                       {{ error }}
