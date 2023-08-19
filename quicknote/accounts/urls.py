@@ -21,10 +21,10 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('accounts/login/', views.login, name="login"),
-    path('accounts/logout/', views.logout, name="logout"),
-    path('accounts/password_change/', views.password_change, name="password_change"),
-    path('accounts/password_reset/', views.password_reset, name="password_reset"),
-    path('accounts/signup/', views.signup, name="signup"),
-    path('accounts/delete/', views.delete, name="delete"),
+    path('login/', views.login, name="login"),
+    path('logout/', views.logout, name="logout"),
+    path('password_change/', views.password_change, name="password_change"),
+    path('password_reset/', views.password_reset, name="password_reset"),
+    path('signup/', views.signup, name="signup"),
+    path('delete/', views.delete, name="delete"),
 ]
