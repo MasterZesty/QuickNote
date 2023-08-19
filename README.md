@@ -21,7 +21,9 @@ python -m pip freeze > requirements.txt
 
 ## :white_check_mark: to do
 
-- [X] 1. User authentication                         -  In Progress
-- [ ] 2. CRUD (Create, Read, Update, Delete) notes   -  To Do
-- [ ] 3. Encrypted Data so that no one can phish it! -  To Do
-- [ ] 4. Beautiful yet simple UI                     -  To Do
+- [X] 1. User authentication - Login | Register | Logout    -  Done
+- [X] 2. CRUD (Create, Read, Update, Delete) notes          -  In Progress
+- [ ] 3. Encrypted Data so that no one can phish it!        -  To Do
+- [ ] 4. Beautiful yet simple UI                            -  To Do
+
+### :white_check_mark: Project Features Demo
