@@ -20,14 +20,12 @@ def accounts_profile(request):
     return render(request, 'profile.html',context)
 
 def accounts_login(request):
-    print(request)
     if request.method == 'POST':
         form = LoginUserForm(request, data=request.POST)
-        print(form)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            print(username,password)
+            
             # verify a user credentials - checks the provided credentials against the credentials stored in the database
             user = authenticate(request,username=username,password=password)
             if user is not None:

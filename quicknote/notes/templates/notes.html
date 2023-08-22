@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Taking App </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+      .card {
+        transition: border-color 1s, box-shadow 0.5s;
+      }
+
+      .card:hover {
+        border-color: rgba(13, 110, 253, 0.7);
+        box-shadow: 0px 0px 10px 2px rgba(13, 110, 253, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Nav Bar of app -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">QuickNotes</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Search </button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Display all notes as cards -->
+    <h1 class="text-center">Capture Your Thoughts!!</h1>
+    <hr>
+    <div id="notes" class="row container-fluid">
+      <div class="container mt-4">
+        <div class="row"> {% for note in notes %} <div class="col-md-4 mb-4">
+            <div class="card note-card bg-light shadow-sl">
+              <div class="card-body">
+                <h5 class="card-title text-center">{{ note.title }}</h5>
+                <p class="card-text">{{ note.textContent|truncatechars:50 }}</p>
+                <div class="card-buttons">
+                  <button class="btn btn-danger delete-button" onclick="deleteNote('{{ note.id }}')">Delete</button>
+                  <button class="btn btn-primary edit-button" onclick="editNote('{{ note.id }}')">Edit</button>
+                  <button class="btn btn-success edit-button" onclick="viewNote('{{ note.id }}')">View</button>
+                </div>
+                <p class="card-info mt-4">
+                  <span class="badge badge-pill badge-light">Category:</span>
+                  <span class="badge badge-pill badge-info">{{ note.labels }}</span>
+                  <br>
+                  <span class="badge badge-pill badge-light">Last updated at:</span>
+                  <span class="badge badge-pill badge-info">{{ note.userEditedTimestamp|date:"F j, Y, g:i a" }}</span>
+                  <br>
+                  <span class="badge badge-pill badge-light">Created at:</span>
+                  <span class="badge badge-pill badge-info">{{ note.createdTimestamp|date:"F j, Y, g:i a" }}</span>
+                </p>
+              </div>
+            </div>
+          </div> {% endfor %} </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
