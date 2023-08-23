@@ -17,7 +17,7 @@ def accounts_profile(request):
         'user': user
     }
 
-    return render(request, 'profile.html',context)
+    return redirect('/notes/')
 
 def accounts_login(request):
     if request.method == 'POST':

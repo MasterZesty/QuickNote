@@ -13,7 +13,7 @@ from .models import Notes
 from .api import get_all_list
 
 
-@csrf_exempt
+@login_required
 def create_note(request):
     if request.method == 'POST':
         
@@ -23,7 +23,7 @@ def create_note(request):
         except json.JSONDecodeError:
             return HttpResponse("Invalid JSON data") 
 
-        userName = note_data.get("userName")
+        userName = request.user.username
         textContent = note_data.get("textContent")
         title = note_data.get("title")
 
@@ -39,18 +39,32 @@ def create_note(request):
 
     return HttpResponse("Invalid Request") 
 
-def edit_note(request, note_id):
-    note = get_object_or_404(Notes, noteId=note_id)
-    if request.method == 'POST':
-        form = NotesForm(request.POST, instance=note)
-        if form.is_valid():
-            form.save()
-            return redirect('notes_list')
-    else:
-        form = NotesForm(instance=note)
-    return render(request, 'edit_note.html', {'form': form, 'note': note})
+@login_required
+def edit_note(request):
 
-@csrf_exempt
+    if request.method == "POST":
+        try:
+            edit_note = json.loads(request.body.decode('utf-8')) # Parse the JSON data
+            
+        except json.JSONDecodeError:
+            return HttpResponse("Invalid JSON data request")
+
+        noteId = edit_note.get('id')
+        textContent = edit_note.get('textcontent')
+
+        if noteId:
+                try:    
+                    note = Notes.objects.get(noteId=noteId)
+                    note.textContent = textContent
+                    note.save()
+                    return JsonResponse({'message': 'Note Updated successfully'})
+                except Notes.DoesNotExist:
+                    return JsonResponse({'error': 'Note not found'}, status=404)
+        
+    
+    return JsonResponse({'error': 'Note ID not provided'}, status=400)
+
+@login_required
 def delete_note(request):
     if request.method == "DELETE":
         try:
@@ -71,10 +85,7 @@ def delete_note(request):
         
     return JsonResponse({'error': 'Not Valid request'}, status=400)
 
-def notes_list1(request):
-    notes = Notes.objects.all()
-    return render(request, 'notes_list.html', {'notes': notes})
-
-
+@login_required    
 def notes_list(request):
-    return render(request, 'notes.html',{"notes":get_all_list()})
+    username = request.user.username
+    return render(request, 'notes.html',{"notes":get_all_list(username)})
