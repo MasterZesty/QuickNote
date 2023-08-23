@@ -50,12 +50,26 @@ def edit_note(request, note_id):
         form = NotesForm(instance=note)
     return render(request, 'edit_note.html', {'form': form, 'note': note})
 
-def delete_note(request, note_id):
-    note = get_object_or_404(Notes, noteId=note_id)
-    if request.method == 'POST':
-        note.delete()
-        return redirect('notes_list')
-    return render(request, 'delete_note.html', {'note': note})
+@csrf_exempt
+def delete_note(request):
+    if request.method == "DELETE":
+        try:
+            note_id = json.loads(request.body.decode('utf-8')).get("id") # Parse the JSON data
+            
+        except json.JSONDecodeError:
+            return HttpResponse("Invalid JSON data request") 
+
+        if note_id:
+            try:    
+                note = Notes.objects.get(noteId=note_id)
+                note.delete()
+                return JsonResponse({'message': 'Note deleted successfully'})
+            except Notes.DoesNotExist:
+                return JsonResponse({'error': 'Note not found'}, status=404)
+        else:
+            return JsonResponse({'error': 'Note ID not provided'}, status=400)
+        
+    return JsonResponse({'error': 'Not Valid request'}, status=400)
 
 def notes_list1(request):
     notes = Notes.objects.all()
