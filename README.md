@@ -1,6 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
+![Pylint CI](https://github.com/MasterZesty/QuickNote/actions/workflows/pylint.yml/badge.svg)
 [![GitHub tag](https://img.shields.io/github/tag/MasterZesty/QuickNote?include_prereleases=&sort=semver&color=blue)](https://github.com/MasterZesty/QuickNote/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - QuickNote](https://img.shields.io/github/issues/MasterZesty/QuickNote)](https://github.com/MasterZesty/QuickNote/issues)
