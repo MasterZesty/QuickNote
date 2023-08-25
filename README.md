@@ -1,6 +1,10 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
+[![GitHub tag](https://img.shields.io/github/tag/MasterZesty/QuickNote?include_prereleases=&sort=semver&color=blue)](https://github.com/MasterZesty/QuickNote/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - QuickNote](https://img.shields.io/github/issues/MasterZesty/QuickNote)](https://github.com/MasterZesty/QuickNote/issues)
+
 
 <!-- PROJECT LOGO -->
 # :ledger: QuickNote
@@ -8,11 +12,7 @@ QuickNote - Django based note taking webapp
 
 <!-- ABOUT THE PROJECT -->
 
-![Application Flow](https://github.com/MasterZesty/QuickNote/blob/main/docs/imgs/QuickNote_Flow.png)
-*Screenshot 1: user flow of the application.*
-
 Note-taking web app powered by Django for seamless organization, easy note creation, and intuitive user experience.
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
