@@ -1,29 +1,68 @@
+<a name="readme-top"></a>
+
+<!-- PROJECT SHIELDS -->
+
+<!-- PROJECT LOGO -->
 # :ledger: QuickNote
 QuickNote - Django based note taking webapp
 
+<!-- ABOUT THE PROJECT -->
 
-### :white_check_mark: create venv
-```
-python -m venv quicknote-venv
-```
-### :white_check_mark: activate virtual environment 
-```
-quicknote-venv\Scripts\activate.bat
-```
+![Application Flow](https://github.com/MasterZesty/QuickNote/blob/main/docs/imgs/QuickNote_Flow.png)
+*Screenshot 1: user flow of the application.*
 
-### :white_check_mark: generate a requirements file
-```
-python -m pip freeze > requirements.txt
-```
+Note-taking web app powered by Django for seamless organization, easy note creation, and intuitive user experience.
 
-### :white_check_mark: references
-1. https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 
-## :white_check_mark: to do
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-- [X] 1. User authentication - Login | Register | Logout    -  Done
-- [X] 2. CRUD (Create, Read, Update, Delete) notes          -  In Progress (only create note remaining)
-- [ ] 3. Encrypted Data so that no one can phish it!        -  To Do
-- [ ] 4. Beautiful yet simple UI                            -  To Do
 
-### :white_check_mark: Project Features Demo
+### Built With
+
+![Django](https://img.shields.io/badge/-Django-05122A?style=flat&logo=django)&nbsp;
+![Python](https://img.shields.io/badge/-Python-05122A?style=flat&logo=python)&nbsp;
+![JavaScript](https://img.shields.io/badge/-JavaScript-05122A?style=flat&logo=javascript)&nbsp;
+![MySQL](https://img.shields.io/badge/MySQL-05122A?style=flat&logo=mysql&logoColor=white)&nbsp;
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] User authentication - Login | Register | Logout
+- [x] CRUD (Create, Read, Update, Delete) notes
+- [ ] Encrypted Data so that no one can phish it! 
+- [ ] Beautiful yet simple UI
+
+
+See the [open issues]() for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

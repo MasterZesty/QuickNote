@@ -5,8 +5,8 @@
 {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <div  {% if message.tags %} class="{{ message.tags }}"{% endif %}  id ="overlayMessage">
-            <div class="alert alert-success alert-dismissible position-sticky">
+        <div  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <div class="alert alert-success alert-dismissible">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 <strong>New message!</strong> {{ message }}
               </div>
