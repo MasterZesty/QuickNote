@@ -86,9 +86,6 @@ function sendEditRequest(noteId) {
 }
 
 
-
-
-
 //create note called when user create note
 function sendCreateRequest() {
 
