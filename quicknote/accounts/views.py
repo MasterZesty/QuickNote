@@ -42,9 +42,9 @@ def accounts_login(request):
     return render(request,'login.html',{'form': form})
 
 def accounts_logout(request):
-	logout(request)
-	messages.success(request, ("You Were Logged Out!"))
-	return HttpResponse("<h1>'Hello World'</h1>")
+    logout(request)
+    messages.success(request, ("You Were Logged Out!"))
+    return redirect('accounts:login') # Redirect to login page
 
 def accounts_password_change(request):
     pass

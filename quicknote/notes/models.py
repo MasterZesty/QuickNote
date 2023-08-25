@@ -14,6 +14,9 @@ class Notes(models.Model):
     createdTimestamp = models.DateTimeField(auto_now_add=True)
     labels = models.CharField(max_length=50, default="personal")
 
+    class Meta:
+        verbose_name_plural = "Notes"
+
     def __str__(self):
         return self.title
 

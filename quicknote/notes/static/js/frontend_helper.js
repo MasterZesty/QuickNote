@@ -60,7 +60,7 @@ function sendEditRequest(noteId) {
     })
     .then(response => response.text())
     .then(result => {
-        console.log(result);
+        // console.log(result);
 
         var noteCard = document.getElementById(noteId);
         // console.log("getElementById",noteCard);
@@ -84,3 +84,57 @@ function sendEditRequest(noteId) {
         console.error("Error deleting note", error);
     });
 }
+
+
+
+
+
+//create note called when user create note
+function sendCreateRequest() {
+
+    var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value; // Get the CSRF token from the DOM
+
+    var note_title = document.getElementById("noteTitle").value
+    var note_content =  document.getElementById("noteTextContent").value
+
+    // console.log("noteTitle",note_title);
+    // console.log("noteTextContent",note_content);
+
+    var url = "http://127.0.0.1:8000/notes/create/";
+    var data = JSON.stringify({ title: note_title , textContent:note_content});
+
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken // Make sure csrfToken is defined
+        },
+        body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+        // console.log(result);
+
+        var noteSave = document.getElementById("create_staticBackdrop");
+        // console.log("getElementById",noteSave);
+        
+        if (noteSave) {
+
+            noteSave.remove();
+
+            // Remove the modal backdrop
+            document.querySelector('.modal-backdrop').remove();
+        }
+
+        // Handle success: add the updated note card to the DOM
+
+        // for temp reload page
+        location.reload();
+        }
+        
+        )
+    .catch(error => {
+        console.error("Error deleting note", error);
+    });
+}
+

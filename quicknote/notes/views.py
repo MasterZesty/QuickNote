@@ -26,6 +26,9 @@ def create_note(request):
         userName = request.user.username
         textContent = note_data.get("textContent")
         title = note_data.get("title")
+        
+        if len(title) == 0:
+            title = "Untitled Note"
 
         note = Notes(userName=userName, title=title, textContent=textContent)
 
