@@ -3,10 +3,10 @@
 
 <!-- display message -->
 {% if messages %}
-    <ul class="messages">
+    <ul class="messages mb-0">
         {% for message in messages %}
         <div  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
-            <div class="alert alert-success alert-dismissible">
+            <div class="alert alert-success alert-dismissible mb-0">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 <strong>New message!</strong> {{ message }}
               </div>
@@ -15,6 +15,7 @@
         {% endfor %}
     </ul>
 {% endif %}
+
 
 <!DOCTYPE html>
 <html lang="en">
