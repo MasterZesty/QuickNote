@@ -11,6 +11,9 @@
 QuickNote - Django based note taking webapp
 
 <!-- ABOUT THE PROJECT -->
+![QuickNote](https://github.com/MasterZesty/QuickNote/blob/main/docs/imgs/QuickNote_Demo.gif)
+*Screenshot 1: QuickNote application.*
+
 
 Note-taking web app powered by Django for seamless organization, easy note creation, and intuitive user experience.
 
